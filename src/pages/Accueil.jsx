@@ -8,6 +8,8 @@ import ListeCommentaires from "../components/ListeCommentaires.jsx";
 import { articlesDeTest, commentairesDeTest } from "../donnees-test.js";
 import Article from "./Article.jsx";
 import Articles from "./Articles.jsx";
+import Auteur from "./Auteur.jsx";
+import Auteurs from "./Auteurs.jsx";
 
 export default function Accueil() {
   const [favoris, setFavoris] = useState([]);
@@ -33,14 +35,16 @@ export default function Accueil() {
 
   return (
     <>
-      {/* TEMPORAIRE : test de la page Article avant le routeur */}
+      {/* TEMPORAIRE : test des pages Article et Auteur avant le routeur */}
       <button
         className="bouton secondaire"
         onClick={() => setIdTest((valeur) => valeur + 1)}
       >
-        Article suivant
+        Article / auteur suivant
       </button>
       <Article id={idTest} />
+      <Auteur id={idTest} />
+      <Auteurs />
 
       <Articles /> {/* TEMPORAIRE : à retirer à l'étape 5 */}
       <p>{favoris.length} article(s) en favori</p>
