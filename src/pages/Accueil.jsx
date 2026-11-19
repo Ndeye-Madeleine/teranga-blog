@@ -6,12 +6,14 @@ import CommentaireForm from "../components/CommentaireForm.jsx";
 import ListeArticles from "../components/ListeArticles.jsx";
 import ListeCommentaires from "../components/ListeCommentaires.jsx";
 import { articlesDeTest, commentairesDeTest } from "../donnees-test.js";
+import Article from "./Article.jsx";
 import Articles from "./Articles.jsx";
 
 export default function Accueil() {
   const [favoris, setFavoris] = useState([]);
   const [recherche, setRecherche] = useState("");
   const [commentaires, setCommentaires] = useState(commentairesDeTest);
+  const [idTest, setIdTest] = useState(1); // TEMPORAIRE : étape 4
 
   function basculerFavori(id) {
     setFavoris((actuels) =>
@@ -31,6 +33,15 @@ export default function Accueil() {
 
   return (
     <>
+      {/* TEMPORAIRE : test de la page Article avant le routeur */}
+      <button
+        className="bouton secondaire"
+        onClick={() => setIdTest((valeur) => valeur + 1)}
+      >
+        Article suivant
+      </button>
+      <Article id={idTest} />
+
       <Articles /> {/* TEMPORAIRE : à retirer à l'étape 5 */}
       <p>{favoris.length} article(s) en favori</p>
       <BarreRecherche valeur={recherche} onChangement={setRecherche} />
