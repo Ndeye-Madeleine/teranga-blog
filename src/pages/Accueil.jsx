@@ -1,11 +1,13 @@
 // TODO(P502) : Étape 5.
 // Page d'accueil : présentation et les derniers articles.
 import { useState } from "react";
-import ArticleCard from "../components/ArticleCard.jsx";
+import BarreRecherche from "../components/BarreRecherche.jsx";
+import ListeArticles from "../components/ListeArticles.jsx";
 import { articlesDeTest } from "../donnees-test.js";
 
 export default function Accueil() {
   const [favoris, setFavoris] = useState([]);
+  const [recherche, setRecherche] = useState("");
 
   function basculerFavori(id) {
     setFavoris((actuels) =>
@@ -15,26 +17,19 @@ export default function Accueil() {
     );
   }
 
+  const articlesAffiches = articlesDeTest.filter((article) =>
+    article.title.toLowerCase().includes(recherche.toLowerCase())
+  );
+
   return (
     <>
       <p>{favoris.length} article(s) en favori</p>
-      <section className="grille">
-        <ArticleCard
-          article={articlesDeTest[0]}
-          estFavori={favoris.includes(articlesDeTest[0].id)}
-          onBasculerFavori={basculerFavori}
-        />
-        <ArticleCard
-          article={articlesDeTest[1]}
-          estFavori={favoris.includes(articlesDeTest[1].id)}
-          onBasculerFavori={basculerFavori}
-        />
-        <ArticleCard
-          article={articlesDeTest[2]}
-          estFavori={favoris.includes(articlesDeTest[2].id)}
-          onBasculerFavori={basculerFavori}
-        />
-      </section>
+      <BarreRecherche valeur={recherche} onChangement={setRecherche} />
+      <ListeArticles
+        articles={articlesAffiches}
+        favoris={favoris}
+        onBasculerFavori={basculerFavori}
+      />
     </>
   );
 }
