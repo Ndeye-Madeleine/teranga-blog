@@ -6,6 +6,7 @@ import CommentaireForm from "../components/CommentaireForm.jsx";
 import ListeArticles from "../components/ListeArticles.jsx";
 import ListeCommentaires from "../components/ListeCommentaires.jsx";
 import { articlesDeTest, commentairesDeTest } from "../donnees-test.js";
+import Articles from "./Articles.jsx";
 
 export default function Accueil() {
   const [favoris, setFavoris] = useState([]);
@@ -30,6 +31,7 @@ export default function Accueil() {
 
   return (
     <>
+      <Articles /> {/* TEMPORAIRE : à retirer à l'étape 5 */}
       <p>{favoris.length} article(s) en favori</p>
       <BarreRecherche valeur={recherche} onChangement={setRecherche} />
       <ListeArticles
