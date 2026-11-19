@@ -2,12 +2,15 @@
 // Page d'accueil : présentation et les derniers articles.
 import { useState } from "react";
 import BarreRecherche from "../components/BarreRecherche.jsx";
+import CommentaireForm from "../components/CommentaireForm.jsx";
 import ListeArticles from "../components/ListeArticles.jsx";
-import { articlesDeTest } from "../donnees-test.js";
+import ListeCommentaires from "../components/ListeCommentaires.jsx";
+import { articlesDeTest, commentairesDeTest } from "../donnees-test.js";
 
 export default function Accueil() {
   const [favoris, setFavoris] = useState([]);
   const [recherche, setRecherche] = useState("");
+  const [commentaires, setCommentaires] = useState(commentairesDeTest);
 
   function basculerFavori(id) {
     setFavoris((actuels) =>
@@ -15,6 +18,10 @@ export default function Accueil() {
         ? actuels.filter((favoriId) => favoriId !== id)
         : [...actuels, id]
     );
+  }
+
+  function ajouterCommentaire(nouveau) {
+    setCommentaires((actuels) => [...actuels, nouveau]);
   }
 
   const articlesAffiches = articlesDeTest.filter((article) =>
@@ -30,6 +37,10 @@ export default function Accueil() {
         favoris={favoris}
         onBasculerFavori={basculerFavori}
       />
+
+      {/* TEMPORAIRE : test des commentaires avant la page Article */}
+      <ListeCommentaires commentaires={commentaires} />
+      <CommentaireForm onAjouter={ajouterCommentaire} />
     </>
   );
 }
