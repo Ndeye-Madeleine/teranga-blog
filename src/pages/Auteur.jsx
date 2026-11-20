@@ -1,4 +1,3 @@
-// TODO(P405) : Étape 4 puis 5.
 // Fiche d'un auteur (paramètre d'URL id) et ses articles.
 import { useEffect, useState } from "react";
 import EtatRequete from "../components/EtatRequete.jsx";

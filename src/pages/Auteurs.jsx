@@ -1,4 +1,3 @@
-// TODO(P404) : Étape 4 puis 5.
 // Liste des auteurs chargés depuis l'API.
 import { useEffect, useState } from "react";
 import EtatRequete from "../components/EtatRequete.jsx";

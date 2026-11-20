@@ -1,4 +1,3 @@
-// TODO(P401) : Étape 4 (chapitre 4).
 // Affiche chargement, erreur ou le contenu (children) selon l'état d'une requête.
 // Props attendues : chargement (booléen), erreur (texte ou null), children.
 export default function EtatRequete({ chargement, erreur, children }) {

@@ -1,4 +1,3 @@
-// TODO(P403) : Étape 4 puis 5.
 // Détail d'un article (paramètre d'URL id) et ses commentaires.
 import { useEffect, useState } from "react";
 import CommentaireForm from "../components/CommentaireForm.jsx";

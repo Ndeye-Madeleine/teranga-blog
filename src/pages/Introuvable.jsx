@@ -1,4 +1,3 @@
-// TODO(P504) : Étape 5.
 // Page 404, affichée pour toute URL inconnue.
 import { Link } from "react-router";
 

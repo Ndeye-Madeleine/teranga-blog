@@ -1,4 +1,3 @@
-// TODO(P304) : Étape 3 (chapitre 3).
 // Affiche les commentaires d'un article.
 // Props attendues : commentaires (tableau avec id, name, body).
 export default function ListeCommentaires({ commentaires }) {

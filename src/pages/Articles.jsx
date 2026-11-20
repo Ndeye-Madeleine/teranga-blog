@@ -1,4 +1,3 @@
-// TODO(P402) : Étape 4 puis 5.
 // Liste des articles chargés depuis l'API, avec recherche.
 import { useEffect, useState } from "react";
 import BarreRecherche from "../components/BarreRecherche.jsx";

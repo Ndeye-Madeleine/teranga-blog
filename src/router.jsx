@@ -8,7 +8,6 @@ import Auteurs from "./pages/Auteurs.jsx";
 import Favoris from "./pages/Favoris.jsx";
 import Introuvable from "./pages/Introuvable.jsx";
 
-// TODO(P500) : étape 5 (chapitre 5).
 export const router = createBrowserRouter([
   {
     Component: LayoutPrincipal,

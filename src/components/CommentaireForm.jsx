@@ -1,4 +1,3 @@
-// TODO(P303) : Étape 3 (chapitre 3).
 // Formulaire contrôlé : nom et message, avec validation avant ajout.
 // Props attendues : onAjouter (fonction appelée avec le nouveau commentaire).
 import { useState } from "react";

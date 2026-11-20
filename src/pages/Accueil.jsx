@@ -1,4 +1,3 @@
-// TODO(P502) : Étape 5.
 // Page d'accueil : présentation et les derniers articles.
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";

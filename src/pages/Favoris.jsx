@@ -1,4 +1,3 @@
-// TODO(P503) : Étape 5.
 // Articles mis en favori, partagés par le layout (useOutletContext).
 import { useOutletContext } from "react-router";
 import ListeArticles from "../components/ListeArticles.jsx";
