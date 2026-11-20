@@ -1,5 +1,5 @@
 // Carte d'un article.
-// Props attendues : article (objet avec id, title, body), et plus tard estFavori, onBasculerFavori.
+// Props attendues : article (objet avec id, title, body), estFavori, onBasculerFavori.
 import { Link } from "react-router";
 
 export default function ArticleCard({ article, estFavori, onBasculerFavori }) {

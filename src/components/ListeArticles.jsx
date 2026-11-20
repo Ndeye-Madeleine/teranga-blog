@@ -1,54 +1,18 @@
-// Liste des articles chargés depuis l'API, avec recherche.
-import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router";
-import BarreRecherche from "../components/BarreRecherche.jsx";
-import EtatRequete from "../components/EtatRequete.jsx";
-import ListeArticles from "../components/ListeArticles.jsx";
-import { API_URL } from "../constants.js";
+// Affiche une liste de cartes d'articles.
+// Props attendues : articles (tableau), favoris (tableau d'identifiants), onBasculerFavori (fonction).
+import ArticleCard from "./ArticleCard.jsx";
 
-export default function Articles() {
-  const { favoris, basculerFavori } = useOutletContext();
-  const [articles, setArticles] = useState([]);
-  const [chargement, setChargement] = useState(true);
-  const [erreur, setErreur] = useState(null);
-  const [recherche, setRecherche] = useState("");
-
-  useEffect(() => {
-    const controleur = new AbortController();
-
-    fetch(`${API_URL}/posts?_limit=12`, { signal: controleur.signal })
-      .then((reponse) => {
-        if (!reponse.ok) throw new Error(`Erreur ${reponse.status}`);
-        return reponse.json();
-      })
-      .then((donnees) => {
-        setArticles(donnees);
-        setChargement(false);
-      })
-      .catch((erreurRequete) => {
-        if (erreurRequete.name !== "AbortError") {
-          setErreur(erreurRequete.message);
-          setChargement(false);
-        }
-      });
-
-    return () => controleur.abort();
-  }, []);
-
-  const articlesAffiches = articles.filter((article) =>
-    article.title.toLowerCase().includes(recherche.toLowerCase())
-  );
-
+export default function ListeArticles({ articles, favoris, onBasculerFavori }) {
   return (
-    <>
-      <BarreRecherche valeur={recherche} onChangement={setRecherche} />
-      <EtatRequete chargement={chargement} erreur={erreur}>
-        <ListeArticles
-          articles={articlesAffiches}
-          favoris={favoris.map((favori) => favori.id)}
-          onBasculerFavori={basculerFavori}
+    <section className="grille">
+      {articles.map((article) => (
+        <ArticleCard
+          key={article.id}
+          article={article}
+          estFavori={favoris.includes(article.id)}
+          onBasculerFavori={onBasculerFavori}
         />
-      </EtatRequete>
-    </>
+      ))}
+    </section>
   );
 }
