@@ -1,15 +1,16 @@
-/* Feuille de style de départ : le projet évalue React, pas le CSS.
-   Tu peux l'utiliser telle quelle, la modifier, ou demander à une IA de réécrire tout le CSS
-   et de placer les classes (className) dans ton JSX : c'est la seule aide complète autorisée. */
+/* Feuille de style de Teranga Blog : couleurs inspirées du logo (bleu nuit et orange). */
 :root {
   --fond: #f7f8fa;
   --texte: #1f1f1f;
   --discret: #666666;
-  --accent: #0b6e4f;
+  --accent: #0b2545;
+  --accent-clair: #e8590c;
   --bord: #dddddd;
   --erreur: #b3261e;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
@@ -17,18 +18,89 @@ body {
   color: var(--texte);
   line-height: 1.6;
 }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-clair); }
+
 .conteneur { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem; }
-.barre-nav { background: #fff; border-bottom: 1px solid var(--bord); }
+
+/* Barre de navigation */
+.barre-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--bord);
+  padding: .5rem 1rem;
+  margin-bottom: 1.5rem;
+}
 .barre-nav .conteneur { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
-.barre-nav a { color: var(--texte); text-decoration: none; padding: .25rem 0; }
-.barre-nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); font-weight: 600; }
+.barre-nav img { display: block; }
+.barre-nav a {
+  color: var(--texte);
+  text-decoration: none;
+  padding: .25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.barre-nav a:hover { color: var(--accent-clair); }
+.barre-nav a.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent-clair);
+  font-weight: 600;
+}
+
+/* Cartes et grille */
 .grille { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.carte { background: #fff; border: 1px solid var(--bord); border-radius: 8px; padding: 1rem; }
-.carte h3 { margin-top: 0; text-transform: capitalize; }
-.bouton { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: .5rem .9rem; cursor: pointer; }
+.carte {
+  background: #fff;
+  border: 1px solid var(--bord);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+  margin-bottom: 1rem;
+}
+.grille .carte { margin-bottom: 0; }
+.carte h3 { margin-top: 0; font-size: 1.1rem; line-height: 1.4; }
+.carte h3::first-letter { text-transform: uppercase; }
+.carte h3 a { color: var(--texte); text-decoration: none; }
+.carte h3 a:hover { color: var(--accent-clair); text-decoration: underline; }
+.carte .bouton { margin-top: .5rem; }
+
+/* Boutons et champs */
+.bouton {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: .5rem .9rem;
+  cursor: pointer;
+}
+.bouton:hover { background: var(--accent-clair); }
 .bouton.secondaire { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
-.champ { display: block; width: 100%; padding: .5rem; margin: .25rem 0 .75rem; border: 1px solid var(--bord); border-radius: 6px; font: inherit; }
+.champ {
+  display: block;
+  width: 100%;
+  padding: .5rem;
+  margin: .25rem 0 .75rem;
+  border: 1px solid var(--bord);
+  border-radius: 6px;
+  font: inherit;
+}
+.champ:focus-visible,
+.bouton:focus-visible,
+a:focus-visible { outline: 2px solid var(--accent-clair); outline-offset: 2px; }
+form label { display: block; font-weight: 600; margin-top: .5rem; }
+textarea.champ { min-height: 6rem; resize: vertical; }
+
+/* États */
 .etat-chargement { color: var(--discret); font-style: italic; }
 .etat-erreur { color: var(--erreur); border: 1px solid var(--erreur); border-radius: 6px; padding: .75rem; }
 .message-erreur { color: var(--erreur); font-size: .9rem; margin: -.5rem 0 .75rem; }
 .discret { color: var(--discret); font-size: .9rem; }
+
+/* Téléphone */
+@media (max-width: 600px) {
+  .barre-nav { gap: .75rem; }
+  .conteneur { padding: 1rem .75rem; }
+}
